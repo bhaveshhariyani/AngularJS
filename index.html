@@ -18,6 +18,7 @@
 		</div>
 	</div>
 	<div>{{displayWord}}</div>
+	<div id="correct" style="display: none">The correct answer is - {{selectedWord}}</div>
 	<div>
 		<input type="text" name="guess" ng-model="input.letter" ng-minlength="1" ng-maxlength="1" ng-pattern="/^[A-Za-z]+$/">
 		<button ng-click="letterChosen()">SUBMIT</button>

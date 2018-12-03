@@ -20,6 +20,7 @@ var newGame = function() {
 	$scope.correctLettersChosen=[];
 	$scope.guesses = 6;
 	$scope.displayWord = '';
+	$scope.selectedWord;
 
 	selectedWord = selectRandomWord();
 	var tempDisplayWord = '';
@@ -27,6 +28,7 @@ var newGame = function() {
 		tempDisplayWord += '*';
 	}
 	$scope.displayWord = tempDisplayWord;
+	$scope.selectedWord = selectedWord;
 }
 
 $scope.letterChosen = function()
@@ -61,15 +63,24 @@ $scope.letterChosen = function()
 		$scope.input.letter="";
 		if($scope.guesses==0) {
 			// You Lose
-			$timeout(function() {
+		document.getElementById("correct").style.display="block";
+		setTimeout(myFunction, 3000);
+			// $timeout(function() {
+			// 	newGame();
+			// },500);
+			function myFunction(){
+				$timeout(function() {
 				newGame();
-			},500);
+				});
+				document.getElementById("correct").style.display="none";
+			}
+			
 		}
 		if($scope.displayWord.indexOf("*")==-1) {
 			// Show score
 			$timeout(function() {
 				newGame();
-			},500);
+			},1000);
 		}
 }
 newGame();
