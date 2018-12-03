@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AngularJS App</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body ng-app="angularapp" ng-controller="GameController">
+	<div>
+		Guesses Left :: {{guesses}}
+	</div>
+	<div>
+		<div style="min-width: 40%">
+			Correct Letters :: <span ng-repeat="letter in correctLettersChosen">{{letter}}</span>
+		</div>
+		<div style="min-width: 40%">
+			Incorrect Letters :: <span ng-repeat="letter in incorrectLettersChosen">{{letter}}</span>
+		</div>
+	</div>
+	<div>{{displayWord}}</div>
+	<div>
+		<input type="text" name="guess" ng-model="input.letter" ng-minlength="1" ng-maxlength="1" ng-pattern="/^[A-Za-z]+$/">
+		<button ng-click="letterChosen()">SUBMIT</button>
+	</div>
+</body>
+</html>
